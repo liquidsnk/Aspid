@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspid.Spreadsheets", "Aspid.Spreadsheets\Aspid.Spreadsheets.csproj", "{4DF67EE8-DB41-4E7B-B370-72980679E41F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspid.Core", "Aspid.Core\Aspid.Core.csproj", "{93353162-650A-41C8-9B09-6FD57FD39723}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C9A37F52-37C5-43D5-8AF9-30C8B8707649}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspid.Core.Tests", "Aspid.Core.Tests\Aspid.Core.Tests.csproj", "{FE64374F-8415-4373-9821-537A1616139E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspid.Spreadsheets.Tests", "Aspid.Spreadsheets.Tests\Aspid.Spreadsheets.Tests.csproj", "{FAF56795-0DAD-4BC7-B3E5-E6B1666E1560}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspid.Core.PerformanceTests", "Aspid.Core.PerformanceTests\Aspid.Core.PerformanceTests.csproj", "{9D84AABA-85B1-4B3A-97FE-CA72574BA588}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{0FEBB03C-348A-465D-B956-CB891F9E85DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Performance", "Performance", "{0C1E3A85-9D0B-4921-AFED-876DAA9F1B9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DF67EE8-DB41-4E7B-B370-72980679E41F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DF67EE8-DB41-4E7B-B370-72980679E41F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DF67EE8-DB41-4E7B-B370-72980679E41F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DF67EE8-DB41-4E7B-B370-72980679E41F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93353162-650A-41C8-9B09-6FD57FD39723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93353162-650A-41C8-9B09-6FD57FD39723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93353162-650A-41C8-9B09-6FD57FD39723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93353162-650A-41C8-9B09-6FD57FD39723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE64374F-8415-4373-9821-537A1616139E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE64374F-8415-4373-9821-537A1616139E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE64374F-8415-4373-9821-537A1616139E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE64374F-8415-4373-9821-537A1616139E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAF56795-0DAD-4BC7-B3E5-E6B1666E1560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAF56795-0DAD-4BC7-B3E5-E6B1666E1560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAF56795-0DAD-4BC7-B3E5-E6B1666E1560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF56795-0DAD-4BC7-B3E5-E6B1666E1560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D84AABA-85B1-4B3A-97FE-CA72574BA588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D84AABA-85B1-4B3A-97FE-CA72574BA588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D84AABA-85B1-4B3A-97FE-CA72574BA588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D84AABA-85B1-4B3A-97FE-CA72574BA588}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0FEBB03C-348A-465D-B956-CB891F9E85DF} = {C9A37F52-37C5-43D5-8AF9-30C8B8707649}
+		{0C1E3A85-9D0B-4921-AFED-876DAA9F1B9F} = {C9A37F52-37C5-43D5-8AF9-30C8B8707649}
+		{FE64374F-8415-4373-9821-537A1616139E} = {0FEBB03C-348A-465D-B956-CB891F9E85DF}
+		{FAF56795-0DAD-4BC7-B3E5-E6B1666E1560} = {0FEBB03C-348A-465D-B956-CB891F9E85DF}
+		{9D84AABA-85B1-4B3A-97FE-CA72574BA588} = {0C1E3A85-9D0B-4921-AFED-876DAA9F1B9F}
+	EndGlobalSection
+EndGlobal
