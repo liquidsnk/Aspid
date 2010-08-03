@@ -27,22 +27,25 @@
  */
 #endregion
 
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System;
+using System.Globalization;
 
-[assembly: AssemblyTitle("Aspid")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Aspid")]
-[assembly: AssemblyCopyright("Copyright ©  2010")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-[assembly: ComVisible(false)]
-
-[assembly: Guid("046a8657-25b4-4dc6-9f06-90e5f2c4aada")]
-
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+namespace Aspid.Core.Extensions
+{
+    /// <summary>
+    /// IConvertible interface extension methods.
+    /// </summary>
+    public static class IConvertibleExtensions
+    {
+        /// <summary>
+        /// Returns the invariant culture string representation for the current object, or empty if it's null.
+        /// </summary>
+        /// <param name="self">The current object</param>
+        /// <returns>The invariant culture string representation, or empty if self is null</returns>
+        public static string ToInvariantString(this IConvertible self)
+        {
+            if (self == null) return string.Empty;
+            return self.ToString(CultureInfo.InvariantCulture);
+        }
+    }
+}

@@ -27,22 +27,37 @@
  */
 #endregion
 
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System;
+using System.Globalization;
 
-[assembly: AssemblyTitle("Aspid")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Aspid")]
-[assembly: AssemblyCopyright("Copyright ©  2010")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+using NUnit.Framework;
 
-[assembly: ComVisible(false)]
+using Aspid.Core.Extensions;
 
-[assembly: Guid("046a8657-25b4-4dc6-9f06-90e5f2c4aada")]
+namespace Aspid.Core.Tests.Extensions
+{
+    /// <summary>
+    /// Tests for IConvertible interface extension methods.
+    /// </summary>
+    [TestFixture]
+    public class IConvertibleExtensionsTests
+    {
+        [Test]
+        public void ToInvariantString_OnNullObject_ReturnsEmtpyString()
+        {
+            IConvertible sut = null;
+            Assert.AreEqual(string.Empty, sut.ToInvariantString());
+        }
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+        [Test]
+        public void ToInvariantString_OnNonNullObject_ReturnsItsInvariantCultureStringRepresentation()
+        {
+            IConvertible sut = "string";
+            Assert.AreEqual(sut.ToString(CultureInfo.InvariantCulture), sut.ToInvariantString());
+
+            //Some extra assertions
+            sut = DateTime.Now;
+            Assert.AreEqual(sut.ToString(CultureInfo.InvariantCulture), sut.ToInvariantString(), "Extra Assertion 1 Failed");
+        }
+    }
+}

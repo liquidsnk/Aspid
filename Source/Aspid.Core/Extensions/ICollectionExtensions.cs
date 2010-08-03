@@ -27,22 +27,37 @@
  */
 #endregion
 
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System.Collections;
+using System.Collections.Generic;
 
-[assembly: AssemblyTitle("Aspid")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Aspid")]
-[assembly: AssemblyCopyright("Copyright ©  2010")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+namespace Aspid.Core.Extensions
+{
+    /// <summary>
+    /// ICollection and ICollection<T> interfaces extension methods.
+    /// </summary>
+    public static class ICollectionExtensions
+    {
+        /// <summary>
+        /// Returns a value indicating whether the current collection is null or empty.
+        /// </summary>
+        /// <param name="self">The current collection</param>
+        /// <returns>True if the current collection is null or empty, false otherwise</returns>
+        public static bool IsNullOrEmpty(this ICollection self)
+        {
+            if (self == null || self.Count == 0) return true;
+            return false;
+        }
 
-[assembly: ComVisible(false)]
-
-[assembly: Guid("046a8657-25b4-4dc6-9f06-90e5f2c4aada")]
-
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+        /// <summary>
+        /// Returns a value indicating whether the current collection is null or empty.
+        /// </summary>
+        /// <typeparam name="T">Type of elements of the collection</typeparam>
+        /// <param name="self">The current collection</param>
+        /// <returns>True if the current collection is null or empty, false otherwise</returns>
+        public static bool IsNullOrEmpty<T>(this ICollection<T> self)
+        {
+            if (self == null || self.Count == 0) return true;
+            return false;
+        }
+    }
+}

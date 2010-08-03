@@ -28,12 +28,6 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Linq.Expressions;
-using System.ComponentModel;
-using System.Reflection;
 
 namespace Aspid.Core.Extensions
 {
@@ -50,6 +44,43 @@ namespace Aspid.Core.Extensions
         public static bool IsNullOrEmpty(this string self)
         {
             return string.IsNullOrEmpty(self);
+        }
+
+        /// <summary>
+        /// Deletes all characters from the current string beginning at the specified position.
+        /// Safe remove will handle out of bounds start indexes gracefully, returning the given string.
+        /// </summary>
+        /// <param name="self">The current string</param>
+        /// <param name="startIndex">The zero-based position to begin deleting characters</param>
+        /// <returns>A new System.String that represents the current string except characters beginning from the specified position </returns>
+        /// <exception cref="ArgumentException">
+        /// StartIndex is less than zero.
+        /// </exception>
+        public static string SafeRemove(this string self, int startIndex)
+        {
+            return self.SafeRemove(startIndex, (self ?? "").Length);
+        }
+
+        /// <summary>
+        /// Deletes a specified number of characters from the current string beginning at the specified position.
+        /// Safe remove will handle out of bounds ranges gracefully, returning the given string minus the removed chars.
+        /// </summary>
+        /// <param name="self">The current string</param>
+        /// <param name="startIndex">The zero-based position to begin deleting characters</param>
+        /// <param name="count">The number of characters to delete</param>
+        /// <returns>A new System.String that represents the current string except the specified character range </returns>
+        /// <exception cref="ArgumentException">
+        /// Either startIndex or count are less than zero.
+        /// </exception>
+        public static string SafeRemove(this string self, int startIndex, int count)
+        {
+            if (startIndex < 0) throw new ArgumentException("Start index should be equal or greater than zero");
+            if (count < 0) throw new ArgumentException("Count should be equal or greater than zero");
+
+            if (self == null) return null;
+            if (startIndex >= self.Length) return self;
+            if ((startIndex  + count) > self.Length) return self.Remove(startIndex);
+            return self.Remove(startIndex, count);
         }
     }
 }
