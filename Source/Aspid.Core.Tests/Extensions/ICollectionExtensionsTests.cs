@@ -3,7 +3,7 @@
  * tl;dr: NetBSD type of license (two-clause BSD OSI compliant),
  * use it for whatever you like but reproducing this copyright notice.
  * 
- * Copyright (c) 2008 Fredy H. Treboux.
+ * Copyright (c) 2010 Fredy H. Treboux.
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
