@@ -1,86 +1,149 @@
 ﻿#region License
-/*
- * tl;dr: NetBSD type of license (two-clause BSD OSI compliant),
- * use it for whatever you like but reproducing this copyright notice.
- * 
- * Copyright (c) 2010 Fredy H. Treboux.
- * All rights reserved.
- * 
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
 #endregion
 
-using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using Aspid.Core.Utils;
 
 namespace Aspid.Core.Extensions
 {
     /// <summary>
-    /// String class extension methods.
+    /// Extension methods for String class
     /// </summary>
     public static class StringExtensions
     {
         /// <summary>
-        /// Returns a value indicating whether the current string is null or empty.
+        /// Throws an ArgumentNullException if the string is null, or an ArgumentException if its empty.
         /// </summary>
-        /// <param name="self">The current string</param>
-        /// <returns>True if the current string is null or empty, false otherwise</returns>
-        public static bool IsNullOrEmpty(this string self)
+        /// <param name="paramName">Name of the parameter that's being checked.</param>
+        public static void ThrowIfNullOrEmpty(this string value, string parameterName)
         {
-            return string.IsNullOrEmpty(self);
+            StringUtils.ThrowIfNullOrEmpty(value, parameterName);
         }
 
         /// <summary>
-        /// Deletes all characters from the current string beginning at the specified position.
-        /// Safe remove will handle out of bounds start indexes gracefully, returning the given string.
+        /// Throws an ArgumentNullException if the string is null, or an ArgumentException if its empty.
         /// </summary>
-        /// <param name="self">The current string</param>
-        /// <param name="startIndex">The zero-based position to begin deleting characters</param>
-        /// <returns>A new System.String that represents the current string except characters beginning from the specified position </returns>
-        /// <exception cref="ArgumentException">
-        /// StartIndex is less than zero.
-        /// </exception>
-        public static string SafeRemove(this string self, int startIndex)
+        /// <param name="paramName">Name of the parameter that's being checked.</param>
+        /// <param name="message">Custom message for the exception.</param>
+        public static void ThrowIfNullOrEmpty(this string value, string parameterName, string message)
         {
-            return self.SafeRemove(startIndex, (self ?? "").Length);
+            StringUtils.ThrowIfNullOrEmpty(value, parameterName, message);
         }
 
         /// <summary>
-        /// Deletes a specified number of characters from the current string beginning at the specified position.
-        /// Safe remove will handle out of bounds ranges gracefully, returning the given string minus the removed chars.
+        /// Applies string.Format using this string as format and InvariantCulture.
         /// </summary>
-        /// <param name="self">The current string</param>
-        /// <param name="startIndex">The zero-based position to begin deleting characters</param>
-        /// <param name="count">The number of characters to delete</param>
-        /// <returns>A new System.String that represents the current string except the specified character range </returns>
-        /// <exception cref="ArgumentException">
-        /// Either startIndex or count are less than zero.
-        /// </exception>
-        public static string SafeRemove(this string self, int startIndex, int count)
+        /// <param name="format">The format.</param>
+        /// <param name="args">The args.</param>
+        /// <returns>The formatted string using InvariantCulture</returns>
+        public static string InvariantFormat(this string format, params object[] args)
         {
-            if (startIndex < 0) throw new ArgumentException("Start index should be equal or greater than zero");
-            if (count < 0) throw new ArgumentException("Count should be equal or greater than zero");
+            return StringUtils.InvariantFormat(format, args);
+        }
 
-            if (self == null) return null;
-            if (startIndex >= self.Length) return self;
-            if ((startIndex  + count) > self.Length) return self.Remove(startIndex);
-            return self.Remove(startIndex, count);
+        /// <summary>
+        /// Deletes all the characters from this string beginning at a specified position and continuing through the last position.
+        /// If the string Length is equal or smaller than the provided startIndex, the original string is returned.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <param name="startIndex">The start index.</param>
+        /// <returns></returns>
+        public static string SafeRemove(this string text, int startIndex)
+        {
+            return StringUtils.SafeRemove(text, startIndex);
+        }
+
+        /// <summary>
+        /// Trims the given string.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
+        public static string SafeTrim(this string text)
+        {
+            return StringUtils.SafeTrim(text);
+        }
+
+        /// <summary>
+        /// Determines whether the specified string contains any of the given substrings.
+        /// </summary>
+        /// <typeparam name="TInputType">The type of the input type.</typeparam>
+        /// <param name="text">The text.</param>
+        /// <param name="items">The substrings.</param>
+        /// <returns>
+        /// 	<c>true</c> if the specified list contains any of the given substrings; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool ContainsAny(this string text, IEnumerable<string> substrings)
+        {
+            return StringUtils.ContainsAny(text, substrings);
+        }
+        
+        /// <summary>
+        /// Determines whether the specified text is null or empty.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>
+        /// 	<c>true</c> if the specified text is null or empty; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsNullOrEmpty(this string text)
+        {
+            return string.IsNullOrEmpty(text);
+        }
+
+        /// <summary>
+        /// Returns null if the specified string is empty, otherwise, returns the specified string.
+        /// </summary>
+        /// <param name="text">The specified string.</param>
+        /// <returns></returns>
+        public static string EmptyToNull(this string text)
+        {
+            if (!string.IsNullOrEmpty(text)) return text;
+            return null;
+        }
+
+        /// <summary>
+        /// Joins the given list of strings with the specified separator.
+        /// </summary>
+        /// <param name="separator">The separator.</param>
+        /// <param name="values">The values.</param>
+        /// <returns></returns>
+        public static string Join(this string separator, IEnumerable<string> values)
+        {
+            if (values == null) return string.Empty;
+
+            separator = separator ?? string.Empty;
+            return string.Join(separator, values.ToArray());
+        }
+
+        public static IList<string> CaseSplit(this string text)
+        {
+            return StringUtils.CaseSplit(text);
+        }
+
+        public static string CaseSeparate(this string text)
+        {
+            return StringUtils.CaseSeparate(text);
+        }
+
+        public static string CaseSeparate(this string text, string separator)
+        {
+            return StringUtils.CaseSeparate(text, separator);
+        }
+
+        public static string SubstringSearch(this string text, string value)
+        {
+            return StringUtils.SubstringSearch(text, value);
+        }
+
+        public static string SubstringSearch(this string text, string value, char[] charsToIgnore)
+        {
+            return StringUtils.SubstringSearch(text, value, charsToIgnore);
+        }
+
+        public static string Capitalize(this string text)
+        {
+            return StringUtils.Capitalize(text);
         }
     }
 }

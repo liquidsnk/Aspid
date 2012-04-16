@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aspid.Core.Tests</RootNamespace>
     <AssemblyName>Aspid.Core.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -44,11 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\IConvertibleExtensionsTests.cs" />
-    <Compile Include="Extensions\ICollectionExtensionsTests.cs" />
-    <Compile Include="Extensions\StringExtensionsTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\BaseEntityTests.cs" />
+    <Compile Include="EnumElementTests.cs" />
+    <Compile Include="Extensions\IEnumerableExtensionsTests.cs" />
     <Compile Include="Extensions\ObjectExtensionsTests.cs" />
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
+    <Compile Include="GenericCommandLineStartupTests.cs" />
+    <Compile Include="GenericTypeConverterTests.cs" />
+    <Compile Include="LoggingTests.cs" />
+    <Compile Include="OnDisposeActionTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReflectionHelperTests.cs" />
+    <Compile Include="ReflectTests.cs" />
+    <Compile Include="TemplateTests.cs" />
+    <Compile Include="TupleTests.cs" />
+    <Compile Include="Utils\CollectionUtilsTests.cs" />
+    <Compile Include="Utils\DayOfWeekFlagUtilsTests.cs" />
+    <Compile Include="Utils\EnumUtilsTests.cs" />
+    <Compile Include="Utils\ObjectUtilsTests.cs" />
+    <Compile Include="Utils\StringUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aspid.Core\Aspid.Core.csproj">

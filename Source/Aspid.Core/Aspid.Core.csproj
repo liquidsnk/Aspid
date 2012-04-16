@@ -32,18 +32,104 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\IConvertibleExtensions.cs" />
+    <Compile Include="ApplicationInitializerLocator.cs" />
+    <Compile Include="BaseBindableObject.cs" />
+    <Compile Include="BinarySerialization.cs" />
+    <Compile Include="ConnectionStringManager.cs" />
+    <Compile Include="CrashReporting.cs" />
+    <Compile Include="DayOfWeekFlag.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\PaginationOutputInformation.cs" />
+    <Compile Include="Entities\VersionedEntity.cs" />
+    <Compile Include="EnumElement.cs" />
+    <Compile Include="EnumElementFormatter.cs" />
+    <Compile Include="ExceptionManager.cs" />
+    <Compile Include="Exceptions\StaleObjectException.cs" />
+    <Compile Include="Extensions\AssemblyExtensions.cs" />
+    <Compile Include="Extensions\ControlExtensions.cs" />
+    <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\IConvertibleExtensions.cs" />
+    <Compile Include="Extensions\IDbCommandExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\IFormattableExtensions.cs" />
+    <Compile Include="Extensions\IListExtensions.cs" />
+    <Compile Include="Extensions\NullableExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\RandomExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="GenericCommandLineStartUp.cs" />
+    <Compile Include="GenericTypeConverter.cs" />
+    <Compile Include="IApplicationInitializer.cs" />
+    <Compile Include="IGenericTransaction.cs" />
+    <Compile Include="IHideObjectMembers.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="ILoggerFactory.cs" />
+    <Compile Include="IServiceLocator.cs" />
+    <Compile Include="Logging.cs" />
+    <Compile Include="OnDisposeAction.cs" />
+    <Compile Include="OracleEnvironment.cs" />
+    <Compile Include="PersistentConversation\IConversation.cs" />
+    <Compile Include="PersistentConversation\IConversationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Reflect.cs" />
+    <Compile Include="ReflectionHelper.cs" />
+    <Compile Include="Template.cs" />
+    <Compile Include="Tuple.cs" />
+    <Compile Include="Utils\AssemblyUtils.cs" />
+    <Compile Include="Utils\CollectionUtils.cs" />
+    <Compile Include="Utils\ControlUtils.cs" />
+    <Compile Include="Utils\DayOfWeekFlagUtils.cs" />
+    <Compile Include="Utils\DesignerUtils.cs" />
+    <Compile Include="Utils\EnumUtils.cs" />
+    <Compile Include="Utils\FrameworkUtils.cs" />
+    <Compile Include="Utils\ObjectUtils.cs" />
+    <Compile Include="Utils\StringUtils.cs" />
+    <Compile Include="Utils\TypeUtils.cs" />
+    <Compile Include="Wcf\Compression\GzipMessageEncoder.cs" />
+    <Compile Include="Wcf\Compression\GzipMessageEncoderFactory.cs" />
+    <Compile Include="Wcf\Compression\GzipMessageEncodingBindingElement.cs" />
+    <Compile Include="Wcf\Compression\GzipMessageEncodingBindingSection.cs" />
+    <Compile Include="Wcf\FaultException\ExceptionConverterAttribute.cs" />
+    <Compile Include="Wcf\FaultException\ExceptionConverterBehaviorExtensionElement.cs" />
+    <Compile Include="Wcf\FaultException\ExceptionConverterErrorHandler.cs" />
+    <Compile Include="Wcf\FaultException\ExceptionConverterMessageInspector.cs" />
+    <Compile Include="Wcf\NetDataContractSerializer\NetDataContractSerializerAttribute.cs" />
+    <Compile Include="Wcf\NetDataContractSerializer\NetDataContractSerializerElement.cs" />
+    <Compile Include="Wcf\NetDataContractSerializer\NetDataContractSerializerOperationBehavior.cs" />
+    <Compile Include="WinForms\AcrossFirstTabControlComparer.cs" />
+    <Compile Include="WinForms\BindingHelper.cs" />
+    <Compile Include="WinForms\DownFirstTabControlComparer.cs" />
+    <Compile Include="WinForms\Splash.cs" />
+    <Compile Include="WinForms\TabControlComparer.cs" />
+    <Compile Include="WinForms\TabOrderManager.cs" />
+    <Compile Include="WinForms\TabOrderManagerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
