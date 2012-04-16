@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Aspid.Core.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ApplicationInitializer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SupportRecipients" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SupportSendAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">crash-reports@Aspid.com</Value>
+    </Setting>
+    <Setting Name="SupportSendFriendlyName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Crash Reporting</Value>
+    </Setting>
+    <Setting Name="SupportMailFormatIsHtml" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
